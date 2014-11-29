@@ -2,12 +2,10 @@
 /*
 	Plugin Name: WP Model Home Inventory
 	Plugin URI: http://wordpress.org/plugins/wp-model-home-inventory
-	Description: Iteration of the WP Listing plugin (ttp://wordpress.org/plugins/wp-listings/). Designed to work with Organic Themes's Seed Framework. Repurposed as a Model Home Inventory system.
+	Description: Iteration of the WP Listing plugin (ttp://wordpress.org/plugins/wp-listings/). Designed to work with Organic Themes's Seed Framework.
 	Author: Bunt Creative
 	Author URI: http://buntcreative.com
-
 	Version: 0.0.1
-
 	License: GNU General Public License v2.0 (or later)
 	License URI: http://www.opensource.org/licenses/gpl-license.php
 */
