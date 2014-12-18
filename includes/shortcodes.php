@@ -1,11 +1,11 @@
 <?php 
 /**
- * Adds shortcode to display listings
+ * Adds shortcode to display models
  */
 
-add_shortcode( 'listings', 'wp_listings_shortcode' );
+add_shortcode( 'models', 'wp_models_shortcode' );
 
-function wp_listings_shortcode($atts, $content = null) {
+function wp_models_shortcode($atts, $content = null) {
     extract(shortcode_atts(array(
         'id'       => '',
         'taxonomy' => '',
@@ -32,20 +32,20 @@ function wp_listings_shortcode($atts, $content = null) {
      * query args based on parameters
      */
     $query_args = array(
-        'post_type'       => 'listing',
+        'post_type'       => 'model',
         'posts_per_page'  => $limit
     );
 
     if($id) {
         $query_args = array(
-            'post_type'       => 'listing',
+            'post_type'       => 'model',
             'post__in'        => explode(',', $id)
         );
     }
 
     if($term && $taxonomy) {
         $query_args = array(
-            'post_type'       => 'listing',
+            'post_type'       => 'model',
             'posts_per_page'  => $limit,
             'tax_query'       => array(
                 array(
@@ -62,55 +62,55 @@ function wp_listings_shortcode($atts, $content = null) {
      */
     global $post;
 
-    $listings_array = get_posts( $query_args );
+    $models_array = get_posts( $query_args );
 
     $count = 0;
 
-    $output = '<div class="wp-listings-shortcode">';
+    $output = '<div class="wp-models-shortcode">';
 
-    foreach ( $listings_array as $post ) : setup_postdata( $post );
+    foreach ( $models_array as $post ) : setup_postdata( $post );
 
         $count = ( $count == $columns ) ? 1 : $count + 1;
 
         $first_class = ( 1 == $count ) ? 'first' : '';
 
-        $output .= '<div class="listing-wrap ' . get_column_class($columns) . ' ' . $first_class . '"><div class="listing-widget-thumb"><a href="' . get_permalink() . '" class="listing-image-link">' . get_the_post_thumbnail( $post->ID, 'listings' ) . '</a>';
+        $output .= '<div class="model-wrap ' . get_column_class($columns) . ' ' . $first_class . '"><div class="model-widget-thumb"><a href="' . get_permalink() . '" class="model-image-link">' . get_the_post_thumbnail( $post->ID, 'models' ) . '</a>';
 
-        if ( '' != wp_listings_get_status() ) {
-            $output .= '<span class="listing-status ' . strtolower(str_replace(' ', '-', wp_listings_get_status())) . '">' . wp_listings_get_status() . '</span>';
+        if ( '' != wp_models_get_status() ) {
+            $output .= '<span class="model-status ' . strtolower(str_replace(' ', '-', wp_models_get_status())) . '">' . wp_models_get_status() . '</span>';
         }
 
-        $output .= '<div class="listing-thumb-meta">';
+        $output .= '<div class="model-thumb-meta">';
 
-        if ( '' != get_post_meta( $post->ID, '_listing_text', true ) ) {
-            $output .= '<span class="listing-text">' . get_post_meta( $post->ID, '_listing_text', true ) . '</span>';
-        } elseif ( '' != wp_listings_get_property_types() ) {
-            $output .= '<span class="listing-property-type">' . wp_listings_get_property_types() . '</span>';
+        if ( '' != get_post_meta( $post->ID, '_model_text', true ) ) {
+            $output .= '<span class="model-text">' . get_post_meta( $post->ID, '_model_text', true ) . '</span>';
+        } elseif ( '' != wp_models_get_property_types() ) {
+            $output .= '<span class="model-property-type">' . wp_models_get_property_types() . '</span>';
         }
 
-        if ( '' != get_post_meta( $post->ID, '_listing_price', true ) ) {
-            $output .= '<span class="listing-price">' . get_post_meta( $post->ID, '_listing_price', true ) . '</span>';
+        if ( '' != get_post_meta( $post->ID, '_model_price', true ) ) {
+            $output .= '<span class="model-price">' . get_post_meta( $post->ID, '_model_price', true ) . '</span>';
         }
 
-        $output .= '</div><!-- .listing-thumb-meta --></div><!-- .listing-widget-thumb -->';
+        $output .= '</div><!-- .model-thumb-meta --></div><!-- .model-widget-thumb -->';
 
-        if ( '' != get_post_meta( $post->ID, '_listing_open_house', true ) ) {
-            $output .= '<span class="listing-open-house">Open House: ' . get_post_meta( $post->ID, '_listing_open_house', true ) . '</span>';
+        if ( '' != get_post_meta( $post->ID, '_model_open_house', true ) ) {
+            $output .= '<span class="model-open-house">Open House: ' . get_post_meta( $post->ID, '_model_open_house', true ) . '</span>';
         }
 
-        $output .= '<div class="listing-widget-details"><h3 class="listing-title"><a href="' . get_permalink() . '">' . get_the_title() . '</a></h3>';
-        $output .= '<p class="listing-address"><span class="listing-address">' . wp_listings_get_address() . '</span><br />';
-        $output .= '<span class="listing-city-state-zip">' . wp_listings_get_city() . ', ' . wp_listings_get_state() . ' ' . get_post_meta( $post->ID, '_listing_zip', true ) . '</span></p>';
+        $output .= '<div class="model-widget-details"><h3 class="model-title"><a href="' . get_permalink() . '">' . get_the_title() . '</a></h3>';
+        $output .= '<p class="model-address"><span class="model-address">' . wp_models_get_address() . '</span><br />';
+        $output .= '<span class="model-city-state-zip">' . wp_models_get_city() . ', ' . wp_models_get_state() . ' ' . get_post_meta( $post->ID, '_model_zip', true ) . '</span></p>';
 
-        if ( '' != get_post_meta( $post->ID, '_listing_bedrooms', true ) || '' != get_post_meta( $post->ID, '_listing_bathrooms', true ) || '' != get_post_meta( $post->ID, '_listing_sqft', true )) {
-            $output .= '<ul class="listing-beds-baths-sqft"><li class="beds">' . get_post_meta( $post->ID, '_listing_bedrooms', true ) . '<span>Beds</span></li> <li class="baths">' . get_post_meta( $post->ID, '_listing_bathrooms', true ) . '<span>Baths</span></li> <li class="sqft">' . get_post_meta( $post->ID, '_listing_sqft', true ) . '<span>Sq ft</span></li></ul>';
+        if ( '' != get_post_meta( $post->ID, '_model_bedrooms', true ) || '' != get_post_meta( $post->ID, '_model_bathrooms', true ) || '' != get_post_meta( $post->ID, '_model_sqft', true )) {
+            $output .= '<ul class="model-beds-baths-sqft"><li class="beds">' . get_post_meta( $post->ID, '_model_bedrooms', true ) . '<span>Beds</span></li> <li class="baths">' . get_post_meta( $post->ID, '_model_bathrooms', true ) . '<span>Baths</span></li> <li class="sqft">' . get_post_meta( $post->ID, '_model_sqft', true ) . '<span>Sq ft</span></li></ul>';
         }
 
-        $output .= '</div><!-- .listing-widget-details --></div><!-- .listing-wrap -->';
+        $output .= '</div><!-- .model-widget-details --></div><!-- .model-wrap -->';
 
     endforeach;
 
-    $output .= '</div><!-- .wp-listings-shortcode -->';
+    $output .= '</div><!-- .wp-models-shortcode -->';
 
     wp_reset_postdata();
 

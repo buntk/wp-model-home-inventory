@@ -6,7 +6,7 @@
  * Adds the taxonomy title and a list of the terms associated with that taxonomy
  * used in custom post type templates.
  */
-function wp_listings_list_terms($taxonomy) {
+function wp_models_list_terms($taxonomy) {
 	$the_tax_object = get_taxonomy($taxonomy);
 	$terms = get_terms($taxonomy);
 	$term_list = '';
@@ -28,7 +28,7 @@ function wp_listings_list_terms($taxonomy) {
 /**
  * Returns true if the queried taxonomy is a taxonomy of the given post type
  */
-function wp_listings_is_taxonomy_of($post_type) {
+function wp_models_is_taxonomy_of($post_type) {
 	$taxonomies = get_object_taxonomies($post_type);
 	$queried_tax = get_query_var('taxonomy');
 
@@ -40,11 +40,11 @@ function wp_listings_is_taxonomy_of($post_type) {
 }
 
 /**
- * Display navigation to next/previous listing when applicable.
+ * Display navigation to next/previous model when applicable.
  *
- * @since 0.1.0
+ * @since 0.0.1
  */
-function wp_listings_post_nav() {
+function wp_models_post_nav() {
 	// Don't print empty markup if there's nowhere to navigate.
 	$previous = ( is_attachment() ) ? get_post( get_post()->post_parent ) : get_adjacent_post( false, '', true );
 	$next     = get_adjacent_post( false, '', false );
@@ -54,15 +54,15 @@ function wp_listings_post_nav() {
 	}
 
 	?>
-	<nav class="navigation listing-navigation" role="navigation">
-		<h1 class="screen-reader-text"><?php _e( 'Listing navigation', 'wp_listings' ); ?></h1>
+	<nav class="navigation model-navigation" role="navigation">
+		<h1 class="screen-reader-text"><?php _e( 'Model navigation', 'wp_models' ); ?></h1>
 		<div class="nav-links">
 			<?php
 			if ( is_attachment() ) :
-				previous_post_link( '%link', __( '<span class="meta-nav">Published In</span>%title', 'wp_listings' ) );
+				previous_post_link( '%link', __( '<span class="meta-nav">Published In</span>%title', 'wp_models' ) );
 			else :
-				previous_post_link( '%link', __( '<span class="meta-nav">Previous Listing</span>%title', 'wp_listings' ) );
-				next_post_link( '%link', __( '<span class="meta-nav">Next Listing</span>%title', 'wp_listings' ) );
+				previous_post_link( '%link', __( '<span class="meta-nav">Previous Model</span>%title', 'wp_models' ) );
+				next_post_link( '%link', __( '<span class="meta-nav">Next Model</span>%title', 'wp_models' ) );
 			endif;
 			?>
 		</div><!-- .nav-links -->
@@ -72,11 +72,11 @@ function wp_listings_post_nav() {
 
 
 /**
- * Display navigation to next/previous set of listings when applicable.
+ * Display navigation to next/previous set of models when applicable.
  *
- * @since 0.1.0
+ * @since 0.0.1
  */
-function wp_listings_paging_nav() {
+function wp_models_paging_nav() {
 	// Don't print empty markup if there's only one page.
 	if ( $GLOBALS['wp_query']->max_num_pages < 2 ) {
 		return;
@@ -105,15 +105,15 @@ function wp_listings_paging_nav() {
 		'current'  => $paged,
 		'mid_size' => 1,
 		'add_args' => array_map( 'urlencode', $query_args ),
-		'prev_text' => __( '&larr; Previous', 'wp_listings' ),
-		'next_text' => __( 'Next &rarr;', 'wp_listings' ),
+		'prev_text' => __( '&larr; Previous', 'wp_models' ),
+		'next_text' => __( 'Next &rarr;', 'wp_models' ),
 	) );
 
 	if ( $links ) :
 
 	?>
-	<nav class="navigation archive-listing-navigation" role="navigation">
-		<h1 class="screen-reader-text"><?php _e( 'Listings navigation', 'wp_listings' ); ?></h1>
+	<nav class="navigation archive-model-navigation" role="navigation">
+		<h1 class="screen-reader-text"><?php _e( 'Models navigation', 'wp_models' ); ?></h1>
 		<div class="pagination loop-pagination">
 			<?php echo $links; ?>
 		</div><!-- .pagination -->
@@ -127,13 +127,13 @@ function wp_listings_paging_nav() {
  *
  * Return a two-dimensional array of just the additionally registered image sizes, with width, height and crop sub-keys.
  *
- * @since 1.0.1
+ * @since 0.0.1
  *
  * @global array $_wp_additional_image_sizes Additionally registered image sizes.
  *
  * @return array Two-dimensional, with width, height and crop sub-keys.
  */
-function wp_listings_get_additional_image_sizes() {
+function wp_models_get_additional_image_sizes() {
 
 	global $_wp_additional_image_sizes;
 
@@ -147,7 +147,10 @@ function wp_listings_get_additional_image_sizes() {
 
 /*
  * function to set column classes based on parameter
- */
+ *
+ * @since 0.0.1
+ *
+
 function get_column_class($columns) {
     $column_class = '';
 
@@ -179,3 +182,4 @@ function get_column_class($columns) {
 
     return $column_class;
 }
+ */

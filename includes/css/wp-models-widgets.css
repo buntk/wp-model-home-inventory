@@ -1,18 +1,18 @@
 /* =Featured Listing Widget
 ------------------------------------------------------------ */
 
-.widget .listing-wrap {
+.widget .model-wrap {
 	margin: 0 0 25px;
 	width: 100%;
 }
 
-.widget .listing-widget-thumb {
+.widget .model-widget-thumb {
 	position: relative;
 	overflow: hidden;
 	line-height: 0px;
 }
 
-.widget .listing-widget-thumb img {
+.widget .model-widget-thumb img {
 	margin: 0;
 	padding: 0;
 	width: 100%;
@@ -20,23 +20,23 @@
 	border: none;
 }
 
-.widget .listing-widget-thumb a {
+.widget .model-widget-thumb a {
 	padding: 0;
 	border: none;
 	text-decoration: none;
 }
 
-.widget .listing-widget-thumb a img {
+.widget .model-widget-thumb a img {
 	max-width: 100%;
 	max-height: none;
 }
 
-.widget .listing-wrap span.listing-status,
-.widget .listing-wrap .listing-thumb-meta {
+.widget .model-wrap span.model-status,
+.widget .model-wrap .model-thumb-meta {
 	position: absolute;
 }
 
-.widget .listing-wrap span.listing-status {
+.widget .model-wrap span.model-status {
 	width: 130px;
 	padding: 5px;
 	top: 24px;
@@ -49,12 +49,12 @@
 	transform: scale(1) rotate(45deg) translate(0px);
 }
 
-.widget .listing-wrap .listing-thumb-meta {
+.widget .model-wrap .model-thumb-meta {
 	left: 0;
 	bottom: 0;
 }
 
-.widget .listing-wrap .listing-thumb-meta span {
+.widget .model-wrap .model-thumb-meta span {
 	position: relative;
 	top: 0;
 	left: 0;
@@ -67,7 +67,7 @@
 	display: table;
 }
 
-.widget .listing-wrap .listing-thumb-meta span.listing-price {
+.widget .model-wrap .model-thumb-meta span.model-price {
 	padding: 8px 10px;
 	color: #fff;
 	font-size: 18px;
@@ -77,7 +77,7 @@
 	background: rgba(83, 195, 49, 0.80);
 }
 
-.widget .listing-wrap span.listing-open-house {
+.widget .model-wrap span.model-open-house {
 	display: block;
 	padding: 5px 10px;
 	color: #fff;
@@ -87,7 +87,7 @@
 	background: #be1d2c;
 }
 
-.widget .listing-widget-details {
+.widget .model-widget-details {
 	color: #999;
 	text-align: left;
 	line-height: 18px;
@@ -97,7 +97,7 @@
 	border-radius: 0 0 5px 5px;
 }
 
-.widget .listing-widget-details h3.listing-title {
+.widget .model-widget-details h3.model-title {
 	padding: 15px 15px 10px;
 	margin: 0;
 	line-height: 1;
@@ -105,7 +105,7 @@
 	border-bottom: none;
 }
 
-.widget .listing-widget-details h3.listing-title a {
+.widget .model-widget-details h3.model-title a {
 	color: #666;
 	font-size: 18px;
 	background: none;
@@ -113,14 +113,14 @@
 	border: none;
 }
 
-.widget .listing-widget-details p.listing-address {
+.widget .model-widget-details p.model-address {
 	padding: 0 15px 15px;
 	margin: 0;
 	text-align: left;
 }
 
-.widget .listing-widget-details span.listing-address,
-.widget .listing-widget-details span.listing-city-state-zip {
+.widget .model-widget-details span.model-address,
+.widget .model-widget-details span.model-city-state-zip {
 	padding: 0;
 	font-size: 14px;
 	line-height: 18px;
@@ -128,27 +128,27 @@
 	display: inline;
 }
 
-.widget .listing-widget-details .listing-beds-baths-sqft {
+.widget .model-widget-details .model-beds-baths-sqft {
 	width: 100%;
 	padding: 15px 0;
 	margin: 0;
 	border-top: 1px solid #efefef;
 }
 
-.widget .listing-widget-details .listing-beds-baths-sqft li {
+.widget .model-widget-details .model-beds-baths-sqft li {
 	display: inline-block;
 	width: 32%;
 	color: #666;
 	text-align: center;
 }
 
-.widget .listing-widget-details .listing-beds-baths-sqft li span {
+.widget .model-widget-details .model-beds-baths-sqft li span {
 	display: block;
 	color: #999;
 	margin: 5px 0 0 0;
 }
 
-.widget .listing-wrap .more-link {
+.widget .model-wrap .more-link {
 	display: none;
 }
 
@@ -156,19 +156,19 @@
 /* =Listing Search Widget
 ------------------------------------------------------------ */
 
-.widget.listings-search select {
+.widget.models-search select {
 	margin-bottom: 10px;
 	width: 100%;
 }
 
-.widget.listings-search .btn-search i {
+.widget.models-search .btn-search i {
 	display: none;
 }
 
 /* =Listing overlays
 ------------------------------------------------------------ */
 
-.widget .listing-wrap span.listing-status {
+.widget .model-wrap span.model-status {
 	color: #fff;
 	background: #53c331;
 	background: rgba(83, 195, 49, 0.80);
@@ -178,21 +178,21 @@
 	box-shadow: 0px 4px 1px rgba(0, 0, 0, 0.2);
 }
 
-.widget .listing-wrap span.listing-status.active {
+.widget .model-wrap span.model-status.active {
 	background: #53c331;
 	background: rgba(83, 195, 49, 0.80);
 }
-.widget .listing-wrap span.listing-status.sold {
+.widget .model-wrap span.model-status.sold {
 	background: #be1d2c;
 	background: rgba(190, 29, 44, 0.80);
 }
-.widget .listing-wrap span.listing-status.pending {
+.widget .model-wrap span.model-status.pending {
 	background: #db8323;
 	background: rgba(219, 131, 35, 0.80);
 }
-.widget .listing-wrap span.listing-status.new,
-.widget .listing-wrap span.listing-status.reduced,
-.widget .listing-wrap span.listing-status.for-rent {
+.widget .model-wrap span.model-status.new,
+.widget .model-wrap span.model-status.reduced,
+.widget .model-wrap span.model-status.for-rent {
 	background: #24a4ea;
 	background: rgba(36, 164, 234, 0.80);
 }
@@ -201,37 +201,37 @@
 /* =Column classes (for widget only)
 ------------------------------------------------------------ */
 
-.widget .listing.one-half,
-.widget .listing.one-third,
-.widget .listing.one-fourth,
-.widget .listing.one-fifth,
-.widget .listing.one-sixth {
+.widget .model.one-half,
+.widget .model.one-third,
+.widget .model.one-fourth,
+.widget .model.one-fifth,
+.widget .model.one-sixth {
 	float: left;
 	margin: 0 0 15px 2.564102564102564%;
 	padding: 0;
 }
 
-.widget .listing.one-half {
+.widget .model.one-half {
 	width: 48.717948717948715%;
 }
 
-.widget .listing.one-third {
+.widget .model.one-third {
 	width: 31.623931623931625%;
 }
 
-.widget .listing.one-fourth {
+.widget .model.one-fourth {
 	width: 23.076923076923077%;
 }
 
-.widget .listing.one-fifth {
+.widget .model.one-fifth {
 	width: 17.948717948717948%;
 }
 
-.widget .listing.one-sixth {
+.widget .model.one-sixth {
 	width: 14.52991452991453%;
 }
 
-.widget .listing.first {
+.widget .model.first {
 	clear: both;
 	margin-left: 0;
 }
@@ -241,11 +241,11 @@
 ------------------------------------------------------------ */
 
 @media (max-width: 767px) {
-	.widget .listing.one-half,
-	.widget .listing.one-third,
-	.widget .listing.one-fourth,
-	.widget .listing.one-fifth,
-	.widget .listing.one-sixth {
+	.widget .model.one-half,
+	.widget .model.one-third,
+	.widget .model.one-fourth,
+	.widget .model.one-fifth,
+	.widget .model.one-sixth {
 		float: none;
 		width: 100%;
 		padding: 0;

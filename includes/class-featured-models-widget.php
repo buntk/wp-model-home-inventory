@@ -1,16 +1,16 @@
 <?php
 /**
- * This widget displays listings, based on user input, in any widget area.
+ * This widget displays models, based on user input, in any widget area.
  *
- * @package WP Listings
- * @since 0.1.0
+ * @package WP Models
+ * @since 0.0.1
  */
-class WP_Listings_Featured_Listings_Widget extends WP_Widget {
+class WP_Models_Featured_Models_Widget extends WP_Widget {
 
-	function WP_Listings_Featured_Listings_Widget() {
-		$widget_ops  = array( 'classname' => 'wplistings-featured-listings clearfix', 'description' => __( 'Display grid-style featured listings', 'wp_listings' ) );
+	function WP_Models_Featured_Models_Widget() {
+		$widget_ops  = array( 'classname' => 'wpmodels-featured-models clearfix', 'description' => __( 'Display grid-style featured models', 'wp_models' ) );
 		$control_ops = array( 'width' => 300, 'height' => 350 );
-		$this->WP_Widget( 'wplistings-featured-listings', __( 'WP Listings - Featured Listings', 'wp_listings' ), $widget_ops, $control_ops );
+		$this->WP_Widget( 'wpmodels-featured-models', __( 'WP Models - Featured Models', 'wp_models' ), $widget_ops, $control_ops );
 	}
 
 	/**
@@ -69,7 +69,7 @@ class WP_Listings_Featured_Listings_Widget extends WP_Widget {
         	}
 
 			$query_args = array(
-				'post_type'			=> 'listing',
+				'post_type'			=> 'model',
 				'posts_per_page'	=> $instance['posts_per_page'],
 				'paged'				=> get_query_var('paged') ? get_query_var('paged') : 1
 			);
@@ -78,56 +78,56 @@ class WP_Listings_Featured_Listings_Widget extends WP_Widget {
 				$query_args[$posts_term['0']] = $posts_term['1'];
 			}
 
-			$wp_listings_widget_query = new WP_Query( $query_args );
+			$wp_models_widget_query = new WP_Query( $query_args );
 
 			$count = 0;
 
 			global $post;
 
-			if ( $wp_listings_widget_query->have_posts() ) : while ( $wp_listings_widget_query->have_posts() ) : $wp_listings_widget_query->the_post();
+			if ( $wp_models_widget_query->have_posts() ) : while ( $wp_models_widget_query->have_posts() ) : $wp_models_widget_query->the_post();
 
 				$count = ( $count == $instance['number_columns'] ) ? 1 : $count + 1;
 
 				$first_class = ( 1 == $count && 1 == $instance['use_columns'] ) ? ' first' : '';
 
-				$loop = sprintf( '<div class="listing-widget-thumb"><a href="%s" class="listing-image-link">%s</a>', get_permalink(), get_the_post_thumbnail( $post->ID, $instance['image_size'] ) );
+				$loop = sprintf( '<div class="model-widget-thumb"><a href="%s" class="model-image-link">%s</a>', get_permalink(), get_the_post_thumbnail( $post->ID, $instance['image_size'] ) );
 
-				if ( '' != wp_listings_get_status() ) {
-					$loop .= sprintf( '<span class="listing-status %s">%s</span>', strtolower(str_replace(' ', '-', wp_listings_get_status())), wp_listings_get_status() );
+				if ( '' != wp_models_get_status() ) {
+					$loop .= sprintf( '<span class="model-status %s">%s</span>', strtolower(str_replace(' ', '-', wp_models_get_status())), wp_models_get_status() );
 				}
 
-				$loop .= sprintf( '<div class="listing-thumb-meta">' );
+				$loop .= sprintf( '<div class="model-thumb-meta">' );
 
-				if ( '' != get_post_meta( $post->ID, '_listing_text', true ) ) {
-					$loop .= sprintf( '<span class="listing-text">%s</span>', get_post_meta( $post->ID, '_listing_text', true ) );
-				} elseif ( '' != wp_listings_get_property_types() ) {
-					$loop .= sprintf( '<span class="listing-property-type">%s</span>', wp_listings_get_property_types() );
+				if ( '' != get_post_meta( $post->ID, '_model_text', true ) ) {
+					$loop .= sprintf( '<span class="model-text">%s</span>', get_post_meta( $post->ID, '_model_text', true ) );
+				} elseif ( '' != wp_models_get_property_types() ) {
+					$loop .= sprintf( '<span class="model-property-type">%s</span>', wp_models_get_property_types() );
 				}
 
-				if ( '' != get_post_meta( $post->ID, '_listing_price', true ) ) {
-					$loop .= sprintf( '<span class="listing-price">%s</span>', get_post_meta( $post->ID, '_listing_price', true ) );
+				if ( '' != get_post_meta( $post->ID, '_model_price', true ) ) {
+					$loop .= sprintf( '<span class="model-price">%s</span>', get_post_meta( $post->ID, '_model_price', true ) );
 				}
 
-				$loop .= sprintf( '</div><!-- .listing-thumb-meta --></div><!-- .listing-widget-thumb -->' );
+				$loop .= sprintf( '</div><!-- .model-thumb-meta --></div><!-- .model-widget-thumb -->' );
 
-				if ( '' != get_post_meta( $post->ID, '_listing_open_house', true ) ) {
-					$loop .= sprintf( '<span class="listing-open-house">Open House: %s</span>', get_post_meta( $post->ID, '_listing_open_house', true ) );
+				if ( '' != get_post_meta( $post->ID, '_model_open_house', true ) ) {
+					$loop .= sprintf( '<span class="model-open-house">Open House: %s</span>', get_post_meta( $post->ID, '_model_open_house', true ) );
 				}
 
-				$loop .= sprintf( '<div class="listing-widget-details"><h3 class="listing-title"><a href="%s">%s</a></h3>', get_permalink(), get_the_title() );
-				$loop .= sprintf( '<p class="listing-address"><span class="listing-address">%s</span><br />', wp_listings_get_address() );
-				$loop .= sprintf( '<span class="listing-city-state-zip">%s, %s %s</span></p>', wp_listings_get_city(), wp_listings_get_state(), get_post_meta( $post->ID, '_listing_zip', true ) );
+				$loop .= sprintf( '<div class="model-widget-details"><h3 class="model-title"><a href="%s">%s</a></h3>', get_permalink(), get_the_title() );
+				$loop .= sprintf( '<p class="model-address"><span class="model-address">%s</span><br />', wp_models_get_address() );
+				$loop .= sprintf( '<span class="model-city-state-zip">%s, %s %s</span></p>', wp_models_get_city(), wp_models_get_state(), get_post_meta( $post->ID, '_model_zip', true ) );
 
-				if ( '' != get_post_meta( $post->ID, '_listing_bedrooms', true ) || '' != get_post_meta( $post->ID, '_listing_bathrooms', true ) || '' != get_post_meta( $post->ID, '_listing_sqft', true )) {
-					$loop .= sprintf( '<ul class="listing-beds-baths-sqft"><li class="beds">%s<span>Beds</span></li> <li class="baths">%s<span>Baths</span></li> <li class="sqft">%s<span>Sq ft</span></li></ul>', get_post_meta( $post->ID, '_listing_bedrooms', true ), get_post_meta( $post->ID, '_listing_bathrooms', true ), get_post_meta( $post->ID, '_listing_sqft', true ) );
+				if ( '' != get_post_meta( $post->ID, '_model_bedrooms', true ) || '' != get_post_meta( $post->ID, '_model_bathrooms', true ) || '' != get_post_meta( $post->ID, '_model_sqft', true )) {
+					$loop .= sprintf( '<ul class="model-beds-baths-sqft"><li class="beds">%s<span>Beds</span></li> <li class="baths">%s<span>Baths</span></li> <li class="sqft">%s<span>Sq ft</span></li></ul>', get_post_meta( $post->ID, '_model_bedrooms', true ), get_post_meta( $post->ID, '_model_bathrooms', true ), get_post_meta( $post->ID, '_model_sqft', true ) );
 				}
 
-				$loop .= sprintf('</div><!-- .listing-widget-details -->');
+				$loop .= sprintf('</div><!-- .model-widget-details -->');
 
-				$loop .= sprintf( '<a href="%s" class="button btn-primary more-link">%s</a>', get_permalink(), __( 'View Listing', 'wp_listings' ) );
+				$loop .= sprintf( '<a href="%s" class="button btn-primary more-link">%s</a>', get_permalink(), __( 'View Listing', 'wp_models' ) );
 
 				/** wrap in div with possible column class, and output **/
-				printf( '<div class="listing %s post-%s"><div class="listing-wrap">%s</div></div>', $column_class . $first_class, $post->ID, apply_filters( 'wp_listings_featured_listings_widget_loop', $loop ) );
+				printf( '<div class="model %s post-%s"><div class="model-wrap">%s</div></div>', $column_class . $first_class, $post->ID, apply_filters( 'wp_models_featured_models_widget_loop', $loop ) );
 
 			endwhile; endif;
 			wp_reset_postdata();
@@ -162,7 +162,7 @@ class WP_Listings_Featured_Listings_Widget extends WP_Widget {
 		$instance = wp_parse_args( $instance, array(
 			'title'				=> '',
 			'posts_per_page'	=> 3,
-			'image_size'		=> 'listings',
+			'image_size'		=> 'models',
 			'use_columns'       => 0,
 			'number_columns'    => 3,
 			'posts_term'        => ''
@@ -171,7 +171,7 @@ class WP_Listings_Featured_Listings_Widget extends WP_Widget {
 		printf(
 			'<p><label for="%s">%s</label><input type="text" id="%s" name="%s" value="%s" style="%s" /></p>',
 			$this->get_field_id('title'),
-			__( 'Title:', 'wp_listings' ),
+			__( 'Title:', 'wp_models' ),
 			$this->get_field_id('title'),
 			$this->get_field_name('title'),
 			esc_attr( $instance['title'] ),
@@ -179,11 +179,11 @@ class WP_Listings_Featured_Listings_Widget extends WP_Widget {
 		); ?>
 
 		<p>
-			<label for="<?php echo $this->get_field_id( 'image_size' ); ?>"><?php _e( 'Image Size', 'wp_listings' ); ?>:</label>
-			<select id="<?php echo $this->get_field_id( 'image_size' ); ?>" class="wp-listings-image-size-selector" name="<?php echo $this->get_field_name( 'image_size' ); ?>">
+			<label for="<?php echo $this->get_field_id( 'image_size' ); ?>"><?php _e( 'Image Size', 'wp_models' ); ?>:</label>
+			<select id="<?php echo $this->get_field_id( 'image_size' ); ?>" class="wp-models-image-size-selector" name="<?php echo $this->get_field_name( 'image_size' ); ?>">
 				<option value="thumbnail">thumbnail (<?php echo absint( get_option( 'thumbnail_size_w' ) ); ?>x<?php echo absint( get_option( 'thumbnail_size_h' ) ); ?>)</option>
 				<?php
-				$sizes = wp_listings_get_additional_image_sizes();
+				$sizes = wp_models_get_additional_image_sizes();
 				foreach ( (array) $sizes as $name => $size )
 					echo '<option value="' . esc_attr( $name ) . '" ' . selected( $name, $instance['image_size'], FALSE ) . '>' . esc_html( $name ) . ' (' . absint( $size['width'] ) . 'x' . absint( $size['height'] ) . ')</option>';
 				?>
@@ -193,7 +193,7 @@ class WP_Listings_Featured_Listings_Widget extends WP_Widget {
 		<?php
 		printf(
 			'<p>%s <input type="text" name="%s" value="%s" size="3" /></p>',
-			__( 'How many results should be returned?', 'wp_listings' ),
+			__( 'How many results should be returned?', 'wp_models' ),
 			$this->get_field_name('posts_per_page'),
 			esc_attr( $instance['posts_per_page'] )
 		);
@@ -201,9 +201,9 @@ class WP_Listings_Featured_Listings_Widget extends WP_Widget {
 		echo '<p><label for="'. $this->get_field_id( 'posts_term' ) .'">Display by term:</label>
 
 		<select id="'. $this->get_field_id( 'posts_term' ) .'" name="'. $this->get_field_name( 'posts_term' ) .'">
-			<option style="padding-right:10px;" value="" '. selected( '', $instance['posts_term'], false ) .'>'. __( 'All Taxonomies and Terms', 'wp_listings' ) .'</option>';
+			<option style="padding-right:10px;" value="" '. selected( '', $instance['posts_term'], false ) .'>'. __( 'All Taxonomies and Terms', 'wp_models' ) .'</option>';
 
-			$taxonomies = get_object_taxonomies('listing');
+			$taxonomies = get_object_taxonomies('model');
 
 			foreach ( $taxonomies as $taxonomy ) {
 				$the_tax_object = get_taxonomy($taxonomy);
@@ -225,7 +225,7 @@ class WP_Listings_Featured_Listings_Widget extends WP_Widget {
 
 		<p>
 			<input class="checkbox" type="checkbox" <?php checked($instance['use_columns'], 1); ?> id="<?php echo $this->get_field_id( 'use_columns' ); ?>" name="<?php echo $this->get_field_name( 'use_columns' ); ?>" value="1" />
-			<label for="<?php echo $this->get_field_id( 'use_columns' ); ?>">Split listings into columns?</label>
+			<label for="<?php echo $this->get_field_id( 'use_columns' ); ?>">Split models into columns?</label>
 		</p>
 		<p>
 			<label for="<?php echo $this->get_field_id( 'number_columns' ); ?>">Number of columns</label>
