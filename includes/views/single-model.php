@@ -27,9 +27,9 @@ function single_model_post_content() {
 			if ( '' != wp_models_get_status() ) {
 				printf( '<span class="model-status %s">%s</span>', strtolower(str_replace(' ', '-', wp_models_get_status())), wp_models_get_status() );
 			}
-			if ( '' != get_post_meta( $post->ID, '_model_open_house', true ) ) {
+			/*if ( '' != get_post_meta( $post->ID, '_model_open_house', true ) ) {
 				printf( '<span class="model-open-house">Open House: %s</span>', get_post_meta( $post->ID, '_model_open_house', true ) );
-			} ?>
+			}*/ ?>
 		</div><!-- .model-image-wrap -->
 
 		<?php
@@ -60,7 +60,7 @@ function single_model_post_content() {
 		}
 
 		if ( '' != get_post_meta( $post->ID, '_model_lot_sqft', true ) ) {
-			$model_meta .= sprintf( '<li class="model-lot-sqft"><span class="label">Lot Sq Ft: </span>%s</li>', get_post_meta( $post->ID, '_model_lot_sqft', true ) );
+			$model_meta .= sprintf( '<li class="model-lot-sqft"><span class="label">Lot Size: </span>%s</li>', get_post_meta( $post->ID, '_model_lot_sqft', true ) );
 		}
 
 		$model_meta .= sprintf( '</ul>');
@@ -74,7 +74,7 @@ function single_model_post_content() {
 			<ul>
 				<li><a href="#model-description">Description</a></li>
 
-				<li><a href="#model-details">Details</a></li>
+				<!--<li><a href="#model-details">Details</a></li>-->
 
 
 				<?php if (get_post_meta( $post->ID, '_model_gallery', true) != '') { ?>
@@ -85,8 +85,12 @@ function single_model_post_content() {
 					<li><a href="#model-video">Video / Virtual Tour</a></li>
 				<?php } ?>
 
-				<?php if (get_post_meta( $post->ID, '_model_school_neighborhood', true) != '') { ?>
+				<?php /*if (get_post_meta( $post->ID, '_model_school_neighborhood', true) != '') { ?>
 				<li><a href="#model-school-neighborhood">Schools &amp; Neighborhood</a></li>
+				<?php } */ ?>
+                
+                <?php if (get_post_meta( $post->ID, '_model_quick_closing', true) != '') { ?>
+				<li><a href="#model-details">Quick Closing</a></li>
 				<?php } ?>
 			</ul>
 
@@ -94,9 +98,9 @@ function single_model_post_content() {
 				<?php the_content( __( 'View more <span class="meta-nav">&rarr;</span>', 'wp_models' ) ); ?>
 			</div><!-- #model-description -->
 
-			<div id="model-details">
+			<!--<div id="model-details">
 				<?php
-					$details_instance = new WP_Models();
+					/*$details_instance = new WP_Models();
 
 					$pattern = '<tr class="wp_models%s"><td class="label">%s</td><td>%s</td></tr>';
 
@@ -120,13 +124,10 @@ function single_model_post_content() {
 					}
 					echo '</tbody>';
 
-					echo '</table>';
-
-				echo '<h5>Tagged Features</h5><ul class="tagged-features">';
-				echo get_the_term_list( get_the_ID(), 'features', '<li>', '</li><li>', '</li>' );
-				echo '</ul><!-- .tagged-features -->';
-
-				if ( get_post_meta( $post->ID, '_model_home_sum', true) != '' || get_post_meta( $post->ID, '_model_kitchen_sum', true) != '' || get_post_meta( $post->ID, '_model_living_room', true) != '' || get_post_meta( $post->ID, '_model_master_suite', true) != '') { ?>
+					echo '</table>';*/
+				//Remove this next bit because we won't show the data fields in the editor
+				/*
+				if ( get_post_meta( $post->ID, '_model_home_sum', true) != '' || get_post_meta( $post->ID, '_model_kitchen_sum', true) != '' || get_post_meta( $post->ID, '_model_living_room', true) != '' || get_post_meta( $post->ID, '_model_master_suite', true) != '' || get_post_meta( $post->ID, '_quick_closing', true) != '') { ?>
 					<div class="additional-features">
 						<h4>Additional Features</h4>
 						<h6 class="label"><?php _e("Home Summary", 'wp_models'); ?></h6>
@@ -139,9 +140,9 @@ function single_model_post_content() {
 						<p class="value"><?php echo do_shortcode(get_post_meta( $post->ID, '_model_master_suite', true)); ?></p>
 					</div><!-- .additional-features -->
 				<?php
-				} ?>				
+				} */ ?>				
 
-			</div><!-- #model-details -->
+			<!--     </div><!-- #model-details -->
 
 			<?php if (get_post_meta( $post->ID, '_model_gallery', true) != '') { ?>
 			<div id="model-gallery">
@@ -157,12 +158,24 @@ function single_model_post_content() {
 			</div><!-- #model-video -->
 			<?php } ?>
 
-			<?php if (get_post_meta( $post->ID, '_model_school_neighborhood', true) != '') { ?>
+			<?php /*if (get_post_meta( $post->ID, '_model_school_neighborhood', true) != '') { ?>
 			<div id="model-school-neighborhood">
 				<p>
 				<?php echo do_shortcode(get_post_meta( $post->ID, '_model_school_neighborhood', true)); ?>
 				</p>
 			</div><!-- #model-school-neighborhood -->
+			<?php } */ ?>
+            
+            <?php if (get_post_meta( $post->ID, '_model_quick_closing', true) != '') { ?>
+			<!--need new CSS for and ID #model-quick-closing for this content-->
+            <div id="model-details">
+				<?php 
+					echo '<ul class="tagged-features">';
+					echo get_the_term_list( get_the_ID(), 'features', '<li>', '</li><li>', '</li>' );
+					echo '</ul><!-- .tagged-features -->';
+					echo do_shortcode(get_post_meta( $post->ID, '_model_quick_closing', true)); 
+					?>
+			</div><!-- #model-quick-closing -->
 			<?php } ?>
 
 		</div><!-- #model-tabs.model-data -->

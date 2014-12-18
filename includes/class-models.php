@@ -136,7 +136,7 @@ class WP_Models {
 	function register_meta_boxes() {
 
 		add_meta_box( 'model_details_metabox', __( 'Property Details', 'wp_models' ), array( &$this, 'model_details_metabox' ), 'model', 'normal', 'high' );
-		add_meta_box( 'model_features_metabox', __( 'Additional Details', 'wp_models' ), array( &$this, 'model_features_metabox' ), 'model', 'normal', 'high' );
+		add_meta_box( 'model_features_metabox', __( 'Quick Close Tab', 'wp_models' ), array( &$this, 'model_features_metabox' ), 'model', 'normal', 'high' );
 		add_meta_box( 'bc_metabox', __( 'Bunt Creative', 'wp_models' ), array( &$this, 'bc_metabox' ), 'wp-models-options', 'side', 'core' );
 
 	}
