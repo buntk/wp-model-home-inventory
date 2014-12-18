@@ -53,7 +53,7 @@ function archive_model_loop() {
 			$loop .= sprintf('</div><!-- .model-widget-details -->');
 			
 			//More Button
-			$loop .= sprintf( '<a href="%s" class="button btn-primary more-link">%s</a>', get_permalink(), __( 'View Listing', 'wp_models' ) );
+			$loop .= sprintf( '<a href="%s" class="button btn-primary more-link">%s</a>', get_permalink(), __( 'View Model', 'wp_models' ) );
 
 			/** wrap in div with column class, and output **/
 			printf( '<article id="post-%s" class="model entry one-third %s"><div class="model-wrap">%s</div><!-- .model-wrap --></article><!-- article#post-## -->', get_the_id(), $first, apply_filters( 'wp_models_featured_models_widget_loop', $loop ) );

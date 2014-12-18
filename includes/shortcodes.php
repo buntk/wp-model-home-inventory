@@ -94,16 +94,16 @@ function wp_models_shortcode($atts, $content = null) {
 
         $output .= '</div><!-- .model-thumb-meta --></div><!-- .model-widget-thumb -->';
 
-        if ( '' != get_post_meta( $post->ID, '_model_open_house', true ) ) {
+        /*if ( '' != get_post_meta( $post->ID, '_model_open_house', true ) ) {
             $output .= '<span class="model-open-house">Open House: ' . get_post_meta( $post->ID, '_model_open_house', true ) . '</span>';
-        }
+        }*/
 
         $output .= '<div class="model-widget-details"><h3 class="model-title"><a href="' . get_permalink() . '">' . get_the_title() . '</a></h3>';
-        $output .= '<p class="model-address"><span class="model-address">' . wp_models_get_address() . '</span><br />';
-        $output .= '<span class="model-city-state-zip">' . wp_models_get_city() . ', ' . wp_models_get_state() . ' ' . get_post_meta( $post->ID, '_model_zip', true ) . '</span></p>';
+        /*$output .= '<p class="model-address"><span class="model-address">' . wp_models_get_address() . '</span><br />';
+        $output .= '<span class="model-city-state-zip">' . wp_models_get_city() . ', ' . wp_models_get_state() . ' ' . get_post_meta( $post->ID, '_model_zip', true ) . '</span></p>';*/
 
         if ( '' != get_post_meta( $post->ID, '_model_bedrooms', true ) || '' != get_post_meta( $post->ID, '_model_bathrooms', true ) || '' != get_post_meta( $post->ID, '_model_sqft', true )) {
-            $output .= '<ul class="model-beds-baths-sqft"><li class="beds">' . get_post_meta( $post->ID, '_model_bedrooms', true ) . '<span>Beds</span></li> <li class="baths">' . get_post_meta( $post->ID, '_model_bathrooms', true ) . '<span>Baths</span></li> <li class="sqft">' . get_post_meta( $post->ID, '_model_sqft', true ) . '<span>Sq ft</span></li></ul>';
+            $output .= '<ul class="model-beds-baths-sqft"><li class="beds">' . get_post_meta( $post->ID, '_model_bedrooms', true ) . '<span> Beds</span></li> <li class="baths">' . get_post_meta( $post->ID, '_model_bathrooms', true ) . '<span> Baths</span></li> <li class="sqft">' . get_post_meta( $post->ID, '_model_sqft', true ) . '<span> Sq ft</span></li></ul>';
         }
 
         $output .= '</div><!-- .model-widget-details --></div><!-- .model-wrap -->';

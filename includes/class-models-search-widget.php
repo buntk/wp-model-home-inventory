@@ -10,14 +10,14 @@ class WP_Models_Search_Widget extends WP_Widget {
 	function WP_Models_Search_Widget() {
 		$widget_ops = array( 'classname' => 'models-search wp-models-search', 'description' => __( 'Display models search dropdown', 'wp_models' ) );
 		$control_ops = array( 'width' => 300, 'height' => 350, 'id_base' => 'models-search' );
-		$this->WP_Widget( 'models-search', __( 'WP Listings - Search', 'wp_models' ), $widget_ops, $control_ops );
+		$this->WP_Widget( 'models-search', __( 'WP Model Home Inventory - Search', 'wp_models' ), $widget_ops, $control_ops );
 	}
 
 	function widget( $args, $instance ) {
 
 		$instance = wp_parse_args( (array) $instance, array(
 			'title'			=> '',
-			'button_text'	=> __( 'Search Listings', 'wp_models' )
+			'button_text'	=> __( 'Search Models', 'wp_models' )
 		) );
 
 		global $_wp_models_taxonomies;
@@ -65,7 +65,7 @@ class WP_Models_Search_Widget extends WP_Widget {
 
 		$instance = wp_parse_args( (array) $instance, array(
 			'title'			=> '',
-			'button_text'	=> __( 'Search Listings', 'wp_models' )
+			'button_text'	=> __( 'Search Models', 'wp_models' )
 		) );
 
 		global $_wp_models_taxonomies;

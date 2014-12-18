@@ -150,7 +150,7 @@ function wp_models_get_additional_image_sizes() {
  *
  * @since 0.0.1
  *
-
+ */
 function get_column_class($columns) {
     $column_class = '';
 
@@ -182,4 +182,3 @@ function get_column_class($columns) {
 
     return $column_class;
 }
- */
