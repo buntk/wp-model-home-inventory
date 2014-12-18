@@ -10,7 +10,6 @@ add_action('wp_enqueue_scripts', 'enqueue_single_model_scripts');
 function enqueue_single_model_scripts() {
 	wp_enqueue_style( 'wp-models-single' );
 	wp_enqueue_style( 'font-awesome' );
-	wp_enqueue_script( 'jquery-validate', array('jquery'), true, true );
 	wp_enqueue_script( 'fitvids', array('jquery'), true, true );
 	wp_enqueue_script( 'wp-models-single', array('jquery, jquery-ui-tabs', 'jquery-validate'), true, true );
 }

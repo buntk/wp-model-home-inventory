@@ -50,7 +50,7 @@ function archive_model_loop() {
 			$loop .= sprintf( '<span class="model-city-state-zip">%s, %s %s</span></p>', wp_models_get_city(), wp_models_get_state(), get_post_meta( $post->ID, '_model_zip', true ) );
 
 			if ( '' != get_post_meta( $post->ID, '_model_bedrooms', true ) || '' != get_post_meta( $post->ID, '_model_bathrooms', true ) || '' != get_post_meta( $post->ID, '_model_sqft', true )) {
-				$loop .= sprintf( '<ul class="model-beds-baths-sqft"><li class="beds">%s<span>Beds</span></li> <li class="baths">%s<span>Baths</span></li> <li class="sqft">%s<span>Sq ft</span></li></ul>', get_post_meta( $post->ID, '_model_bedrooms', true ), get_post_meta( $post->ID, '_model_bathrooms', true ), get_post_meta( $post->ID, '_model_sqft', true ) );
+				$loop .= sprintf( '<ul class="model-beds-baths-sqft"><li class="beds">%s<span>Beds</span></li> <li class="baths">%s<span>Baths</span></li> <li class="sqft">%s<span>Lot Size</span></li></ul>', get_post_meta( $post->ID, '_model_bedrooms', true ), get_post_meta( $post->ID, '_model_bathrooms', true ), get_post_meta( $post->ID, '_model_sqft', true ) );
 			}
 
 			$loop .= sprintf('</div><!-- .model-widget-details -->');

@@ -23,11 +23,14 @@ echo '</div><br style="clear: both;" /><br /><br />';
 
 echo '<div style="width: 90%; float: left;">';
 
-	_e('<p><label>Custom Listing Text (custom text to display as overlay on featured model widget)<br />', 'wp_models');
+	_e('<p><label>Custom Model Text (custom text to display as overlay on featured model widget)<br />', 'wp_models');
 	printf( __( '<input type="text" name="wp_models[_model_text]" value="%s" /></label></p>', 'wp_models' ), htmlentities( get_post_meta( $post->ID, '_model_text', true) ) );
 
 echo '</div><br style="clear: both;" /><br /><br />';
 
+/*removing the Gallery field for my project
+*
+*
 echo '<div style="width: 100%; float: left;">';
 	
 	// Hide MCE Toolbar on this editor because it's not needed
@@ -51,6 +54,9 @@ echo '<div style="width: 100%; float: left;">';
 	wp_editor($wpmodels_gallery_content, $wpmodels_gallery_editor_id, $wpmodels_gallery_editor_settings);
 
 echo '</div><br style="clear: both;" /><br /><br />';
+*
+*
+*/
 
 echo '<div style="width: 90%; float: left;">';
 	

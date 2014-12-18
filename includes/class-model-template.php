@@ -16,8 +16,9 @@
 class Single_Model_Template {
 
 	function __construct() {
-
-		add_action( 'admin_menu', array( $this, 'wpmodels_add_metabox' ) );
+/* For the project I am working to customize this plugin I don't want to create a custom single-model-custom.php file, so I don't want the metabox displaying on the post edit page.
+		//add_action( 'admin_menu', array( $this, 'wpmodels_add_metabox' ) );
+*/
 		add_action( 'save_post', array( $this, 'metabox_save' ), 1, 2 );
 
 	}
@@ -31,7 +32,7 @@ class Single_Model_Template {
 
 		foreach ( (array) $templates as $file => $full_path ) {
 
-			if ( ! preg_match( '|Single Listing Template:(.*)$|mi', file_get_contents( $full_path ), $header ) )
+			if ( ! preg_match( '|Single Model Template:(.*)$|mi', file_get_contents( $full_path ), $header ) )
 				continue;
 
 			$model_templates[ $file ] = _cleanup_header_comment( $header[1] );

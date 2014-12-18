@@ -31,21 +31,21 @@ class WP_Models {
 		$this->property_details = apply_filters( 'wp_models_property_details', array(
 			'col1' => array(
 			    __( 'Price:', 'wp_models' ) 					=> '_model_price',
-			    __( 'Address:', 'wp_models' )					=> '_model_address',
-			    __( 'City:', 'wp_models' )					=> '_model_city',
-			    __( 'State:', 'wp_models' )					=> '_model_state',
-			    __( 'ZIP:', 'wp_models' )						=> '_model_zip',
-			    __( 'MLS #:', 'wp_models' ) 					=> '_model_mls',
-				__( 'Open House Time & Date:', 'wp_models' ) 	=> '_model_open_house'
+				__( 'Square Feet:', 'wp_models' )				=> '_model_sqft',
+				__( 'Lot Size:', 'wp_models' )					=> '_model_lot_sqft',
+			    //__( 'Address:', 'wp_models' )					=> '_model_address',
+			    //__( 'City:', 'wp_models' )					=> '_model_city',
+			    //__( 'Prov/State:', 'wp_models' )					=> '_model_state',
+			    //__( 'Postal:', 'wp_models' )						=> '_model_zip',
 			),
 			'col2' => array(
-			    __( 'Year Built:', 'wp_models' ) 				=> '_model_year_built',
-			    __( 'Floors:', 'wp_models' ) 					=> '_model_floors',
-			    __( 'Square Feet:', 'wp_models' )				=> '_model_sqft',
-				__( 'Lot Square Feet:', 'wp_models' )			=> '_model_lot_sqft',
-			    __( 'Bedrooms:', 'wp_models' )				=> '_model_bedrooms',
-			    __( 'Bathrooms:', 'wp_models' )				=> '_model_bathrooms',
-			    __( 'Pool:', 'wp_models' )					=> '_model_pool'
+			    //__( 'Year Built:', 'wp_models' ) 				=> '_model_year_built',
+			    //__( 'Floors:', 'wp_models' ) 					=> '_model_floors',
+			    __( 'Bedrooms:', 'wp_models' )					=> '_model_bedrooms',
+			    __( 'Bathrooms:', 'wp_models' )					=> '_model_bathrooms',
+			    //__( 'Pool:', 'wp_models' )					=> '_model_pool'
+				//__( 'MLS #:', 'wp_models' ) 					=> '_model_mls',
+				//__( 'Open House Time & Date:', 'wp_models' ) 	=> '_model_open_house'
 			),
 		) );
 
