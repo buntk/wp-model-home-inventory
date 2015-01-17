@@ -59,7 +59,7 @@ echo '<div style="width: 100%; float: left;">';
 			'editor_class'		=> 'wpmodels_quick_closing',
 			'textarea_rows'		=> 20,
 			'tinymce'			=> true,
-			'quicktags'			=> false,
+			'quicktags'			=> true,
 			'drag_drop_upload'	=> false
 		);
 

@@ -75,7 +75,7 @@ function wp_models_init() {
 	/** Registers and enqueues scripts for single models */
 	add_action('wp_enqueue_scripts', 'add_wp_models_scripts');
 	function add_wp_models_scripts() {
-		wp_register_script( 'wp-models-single', WP_MODELS_URL . 'includes/js/single-model.js' ); // enqueued only on single models
+		wp_register_script( 'wp-models-single', WP_MODELS_URL . '/includes/js/single-model.js' ); // enqueued only on single models
 		wp_register_script( 'fitvids', '//cdnjs.cloudflare.com/ajax/libs/fitvids/1.1.0/jquery.fitvids.js', array('jquery'), true, true ); // enqueued only on single models
 		wp_enqueue_script( 'jquery' );
 		wp_enqueue_script( 'jquery-ui-tabs', array('jquery') );
@@ -105,7 +105,7 @@ function wp_models_init() {
 		}
 
         if ( file_exists(dirname( __FILE__ ) . '/includes/css/wp-models.css') ) {
-        	wp_register_style('wp_models', WP_MODELS_URL . 'includes/css/wp-models.css');
+        	wp_register_style('wp_models', WP_MODELS_URL . '/includes/css/wp-models.css');
             wp_enqueue_style('wp_models');
         }
     }
@@ -125,7 +125,7 @@ function wp_models_init() {
 		}
 
         if ( file_exists(dirname( __FILE__ ) . '/includes/css/wp-models-widgets.css') ) {
-        	wp_register_style('wp_models_widgets', WP_MODELS_URL . 'includes/css/wp-models-widgets.css');
+        	wp_register_style('wp_models_widgets', WP_MODELS_URL . '/includes/css/wp-models-widgets.css');
             wp_enqueue_style('wp_models_widgets');
         }
     }
