@@ -92,6 +92,30 @@ div.content-area {
 	bottom: 0;
 }
 
+/**/
+.archive .model-wrap .model-series,
+.wp-models-shortcode .model-wrap .model-series {
+	position: absolute;
+	left: 0;
+	top: 0;
+}
+
+.wp-models-shortcode .model-wrap .model-series span{
+	position: relative;
+	padding: 5px 10px;
+	color: #111;
+	background: #fff;
+	background: rgba(255,255,255,0.80);
+	font-size: 14px;
+	line-height: 14px;
+	font-weight: normal;
+	display: table;
+	top: inherit;
+	left: inherit;
+	border-radius: 0;
+}
+/**/
+
 .archive .model-wrap .model-thumb-meta span,
 .wp-models-shortcode .model-wrap .model-thumb-meta span {
 	position: relative;
@@ -115,8 +139,8 @@ div.content-area {
 	font-size: 18px;
 	line-height: 18px;
 	font-weight: 700;
-	background: #53c331;
-	background: rgba(83, 195, 49, 0.80);
+	background: #333333;
+	background: rgba(51, 51, 51, 0.80);
 }
 
 .archive .model-wrap span.model-open-house,
@@ -180,6 +204,28 @@ div.content-area {
 	display: inline;
 }
 
+.archive .model-widget-details .model-brochure,
+.wp-models-shortcode .model-widget-details .model-brochure, {
+	padding: 0 15px;
+	font-size: 11px;
+	line-height: 18px;
+	text-align: center;
+	display: inline;
+}
+
+.archive .model-widget-details .model-brochure p,
+.wp-models-shortcode .model-widget-details .model-brochure p, {
+	padding: 2px 2px;
+	font-size: 11px;
+}
+
+.archive .model-widget-details .model-brochure a,
+.archive .model-widget-details .model-brochure a:link,
+.wp-models-shortcode .model-widget-details .model-brochure a,
+.wp-models-shortcode .model-widget-details .model-brochure a:link {
+	font-size: 11px;
+}
+
 .archive .model-widget-details .model-beds-baths-sqft,
 .wp-models-shortcode .model-widget-details .model-beds-baths-sqft {
 	width: 100%;
@@ -224,8 +270,8 @@ div.content-area {
 .archive .model-wrap span.model-status,
 .wp-models-shortcode .model-wrap span.model-status {
 	color: #fff;
-	background: #53c331;
-	background: rgba(83, 195, 49, 0.80);
+	background: #be1d2c;
+	background: rgba(190, 29, 44, 0.80);
 	font-weight: 700;
 	text-align: center;
 	text-transform: uppercase;
@@ -238,7 +284,9 @@ div.content-area {
 	background: rgba(83, 195, 49, 0.80);
 }
 .archive .model-wrap span.model-status.sold,
-.wp-models-shortcode .model-wrap span.model-status.sold {
+.archive .model-wrap span.model-status.sold-out,
+.wp-models-shortcode .model-wrap span.model-status.sold
+.wp-models-shortcode .model-wrap span.model-status.sold-out {
 	background: #be1d2c;
 	background: rgba(190, 29, 44, 0.80);
 }

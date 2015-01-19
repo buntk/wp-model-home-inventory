@@ -388,7 +388,7 @@ class WP_Models_Taxonomies {
 	function create_terms() {
 
 		/** Default terms for status */
-		$status_terms = apply_filters( 'wp_models_default_status_terms', array('New' => 'new', 'Featured' => 'featured','Sold' => 'sold', 'Reduced' => 'reduced') );
+		$status_terms = apply_filters( 'wp_models_default_status_terms', array('New' => 'new', 'Featured' => 'featured','Sold Out' => 'sold') );
 		foreach ($status_terms as $term => $slug) {
 			if (term_exists($term, 'status')) {
 				continue;

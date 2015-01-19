@@ -74,19 +74,25 @@ function wp_models_shortcode($atts, $content = null) {
 
         $first_class = ( 1 == $count ) ? 'first' : '';
 
-        $output .= '<div class="model-wrap ' . get_column_class($columns) . ' ' . $first_class . '"><div class="model-widget-thumb"><a href="' . get_permalink() . '" class="model-image-link">' . get_the_post_thumbnail( $post->ID, 'models' ) . '</a>';
+        $output .= '<div class="model-wrap ' . get_column_class($columns) . ' ' . $first_class . '"><h3 class="model-title"><a href="' . get_permalink() . '">' . get_the_title() . '</a></h3><div class="model-widget-thumb"><a href="' . get_permalink() . '" class="model-image-link">' . get_the_post_thumbnail( $post->ID, 'models' ) . '</a>';
 
         if ( '' != wp_models_get_status() ) {
             $output .= '<span class="model-status ' . strtolower(str_replace(' ', '-', wp_models_get_status())) . '">' . wp_models_get_status() . '</span>';
         }
+		
+		if ( '' != get_post_meta( $post->ID, '_model_text', true ) ) {
+		$output .= '<div class="model-series"><span>' . get_post_meta( $post->ID, '_model_text', true ) . '</span>';
+		}
+		
+		$output .= '</div><!-- .model-series -->';
 
         $output .= '<div class="model-thumb-meta">';
 
-        if ( '' != get_post_meta( $post->ID, '_model_text', true ) ) {
+        /*if ( '' != get_post_meta( $post->ID, '_model_text', true ) ) {
             $output .= '<span class="model-text">' . get_post_meta( $post->ID, '_model_text', true ) . '</span>';
         } elseif ( '' != wp_models_get_property_types() ) {
             $output .= '<span class="model-property-type">' . wp_models_get_property_types() . '</span>';
-        }
+        }*/
 
         if ( '' != get_post_meta( $post->ID, '_model_price', true ) ) {
             $output .= '<span class="model-price">' . get_post_meta( $post->ID, '_model_price', true ) . '</span>';
@@ -98,8 +104,14 @@ function wp_models_shortcode($atts, $content = null) {
             $output .= '<span class="model-open-house">Open House: ' . get_post_meta( $post->ID, '_model_open_house', true ) . '</span>';
         }*/
 
-        $output .= '<div class="model-widget-details"><h3 class="model-title"><a href="' . get_permalink() . '">' . get_the_title() . '</a></h3>';
-        /*$output .= '<p class="model-address"><span class="model-address">' . wp_models_get_address() . '</span><br />';
+		$output .='<div class="model-widget-details">';
+		
+		//if ( '' != get_post_meta( $post->ID, '_model_widget-details', true ) ) {
+		$output .='<div class="model-brochure">' . get_post_meta( $post->ID, '_model_widget_brochure', true ) . '</div>';
+		//}
+		
+        /*$output .= '<div class="model-widget-details"><h3 class="model-title"><a href="' . get_permalink() . '">' . get_the_title() . '</a></h3>';
+        $output .= '<p class="model-address"><span class="model-address">' . wp_models_get_address() . '</span><br />';
         $output .= '<span class="model-city-state-zip">' . wp_models_get_city() . ', ' . wp_models_get_state() . ' ' . get_post_meta( $post->ID, '_model_zip', true ) . '</span></p>';*/
 
         if ( '' != get_post_meta( $post->ID, '_model_bedrooms', true ) || '' != get_post_meta( $post->ID, '_model_bathrooms', true ) || '' != get_post_meta( $post->ID, '_model_sqft', true )) {

@@ -3,7 +3,8 @@
  * The Template for displaying all single model posts on Organic Theme's Seed Framework
  *
  * @package WP Models
- * @since 0.0.1
+ * @since 0.0.2
+ * This version adds properticons
  */
 
 add_action('wp_enqueue_scripts', 'enqueue_single_model_scripts');
@@ -12,6 +13,7 @@ function enqueue_single_model_scripts() {
 	wp_enqueue_style( 'font-awesome' );
 	wp_enqueue_script( 'fitvids', array('jquery'), true, true );
 	wp_enqueue_script( 'wp-models-single', array('jquery, jquery-ui-tabs', 'jquery-validate'), true, true );
+	wp_enqueue_style( 'properticons' );
 }
 
 function single_model_post_content() {
@@ -40,32 +42,45 @@ function single_model_post_content() {
 		}
 
 		if ( '' != wp_models_get_property_types() ) {
-			$model_meta .= sprintf( '<li class="model-property-type"><span class="label">Property Type: </span>%s</li>', get_the_term_list( get_the_ID(), 'property-types', '', ', ', '' ) );
+			$model_meta .= sprintf( '<li class="model-property-type"><span class="label">Type: </span>%s</li>', get_the_term_list( get_the_ID(), 'property-types', '', ', ', '' ) );
 		}
 
 		if ( '' != wp_models_get_locations() ) {
 			$model_meta .= sprintf( '<li class="model-location"><span class="label">Location: </span>%s</li>', get_the_term_list( get_the_ID(), 'locations', '', ', ', '' ) );
 		}
-
-		if ( '' != get_post_meta( $post->ID, '_model_bedrooms', true ) ) {
-			$model_meta .= sprintf( '<li class="model-bedrooms"><span class="label">Beds: </span>%s</li>', get_post_meta( $post->ID, '_model_bedrooms', true ) );
-		}
-
-		if ( '' != get_post_meta( $post->ID, '_model_bathrooms', true ) ) {
-			$model_meta .= sprintf( '<li class="model-bathrooms"><span class="label">Baths: </span>%s</li>', get_post_meta( $post->ID, '_model_bathrooms', true ) );
-		}
-
-		if ( '' != get_post_meta( $post->ID, '_model_sqft', true ) ) {
-			$model_meta .= sprintf( '<li class="model-sqft"><span class="label">Sq Ft: </span>%s</li>', get_post_meta( $post->ID, '_model_sqft', true ) );
-		}
-
-		if ( '' != get_post_meta( $post->ID, '_model_lot_sqft', true ) ) {
-			$model_meta .= sprintf( '<li class="model-lot-sqft"><span class="label">Lot Size: </span>%s</li>', get_post_meta( $post->ID, '_model_lot_sqft', true ) );
-		}
+		
+		/*
+		if ( '' != wp_models_get_community_name() ) {
+			$model_meta .= sprintf( '<li class="model-community-name"><span class="label">Community: </span>%s</li>', get_the_term_list( get_the_ID(), 'community-names', '', ', ', '' ) );
+		}*/
 
 		$model_meta .= sprintf( '</ul>');
 
 		echo $model_meta;
+		?>
+        <?php
+
+		$model_meta2 = sprintf( '<ul class="model-meta model-meta2">');
+
+		if ( '' != get_post_meta( $post->ID, '_model_bedrooms', true ) ) {
+			$model_meta2 .= sprintf( '<li class="model-bedrooms"><span class="label">Beds: </span>%s</li>', get_post_meta( $post->ID, '_model_bedrooms', true ) );
+		}
+
+		if ( '' != get_post_meta( $post->ID, '_model_bathrooms', true ) ) {
+			$model_meta2 .= sprintf( '<li class="model-bathrooms"><span class="label">Baths: </span>%s</li>', get_post_meta( $post->ID, '_model_bathrooms', true ) );
+		}
+
+		if ( '' != get_post_meta( $post->ID, '_model_sqft', true ) ) {
+			$model_meta2 .= sprintf( '<li class="model-sqft"><span class="label">Sq Ft: </span>%s</li>', get_post_meta( $post->ID, '_model_sqft', true ) );
+		}
+
+		if ( '' != get_post_meta( $post->ID, '_model_lot_sqft', true ) ) {
+			$model_meta2 .= sprintf( '<li class="model-lot-sqft"><span class="label">Series: </span>%s</li>', get_post_meta( $post->ID, '_model_lot_sqft', true ) );
+		}
+
+		$model_meta2 .= sprintf( '</ul>');
+
+		echo $model_meta2;
 
 		?>
 

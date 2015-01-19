@@ -218,4 +218,10 @@ pip-log.txt
 ## Dreamweaver
 #############
 _notes/
+## remove files from repo if they already exist
 git rm -r path/to/_notes
+
+#############
+## Model Home Inventory Development
+#############
+_dev

@@ -182,7 +182,8 @@
 	background: #53c331;
 	background: rgba(83, 195, 49, 0.80);
 }
-.widget .model-wrap span.model-status.sold {
+.widget .model-wrap span.model-status.sold,
+.widget .model-wrap span.model-status.sold-out {
 	background: #be1d2c;
 	background: rgba(190, 29, 44, 0.80);
 }

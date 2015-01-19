@@ -19,14 +19,14 @@ echo '<div style="width: 45%; float: left;">';
 		printf( $pattern, esc_html( $label ), $key, esc_attr( get_post_meta( $post->ID, $key, true ) ) );
 	}
 
-echo '</div><br style="clear: both;" /><br /><br />';
+echo '</div><br style="clear: both;" />';
 
 echo '<div style="width: 90%; float: left;">';
 
 	_e('<p><label>Custom Model Text (custom text to display as overlay on featured model widget)<br />', 'wp_models');
 	printf( __( '<input type="text" name="wp_models[_model_text]" value="%s" /></label></p>', 'wp_models' ), htmlentities( get_post_meta( $post->ID, '_model_text', true) ) );
 
-echo '</div><br style="clear: both;" /><br /><br />';
+echo '</div><br style="clear: both;" />';
 
 /*removing the Gallery field for my project
 *
@@ -57,6 +57,31 @@ echo '</div><br style="clear: both;" /><br /><br />';
 *
 *
 */
+
+/* New editor field Quick Closing and Brochure content rolled into shortcode layout */
+echo '<div style="width: 90%; float: left;">';
+	
+	// Hide MCE Toolbar on this editor because it's not needed
+	//echo '<style>#wp-_model_gallery-wrap .mce-toolbar-grp {display: none;}</style>';
+	
+	_e('<p><label>Add Brochure and Quick Closing links using this editor:', 'wp_models');
+
+	$wpmodels_widget_brochure_content = get_post_meta( $post->ID, '_model_widget_brochure', true);
+	$wpmodels_widget_brochure_editor_id = '_model_widget_brochure';
+
+	$wpmodels_widget_brochure_editor_settings = array(
+			'wpautop' 			=> false,
+			'textarea_name' 	=> 'wp_models[_model_widget_brochure]',
+			'editor_class'		=> 'wpmodels_widget_brochure',
+			'textarea_rows'		=> 4,
+			'tinymce'			=> true,
+			'quicktags'			=> true,
+			'drag_drop_upload'	=> false
+		);
+
+	wp_editor($wpmodels_widget_brochure_content, $wpmodels_widget_brochure_editor_id, $wpmodels_widget_brochure_editor_settings);
+
+echo '</div><br style="clear: both;" />';
 
 echo '<div style="width: 90%; float: left;">';
 	
