@@ -43,7 +43,7 @@ echo '</div><br style="clear: both;" />';
 *
 */
 
-/* New editor field for quick closing model homes 
+/* New editor field for quick closing model homes */
 echo '<div style="width: 100%; float: left;">';
 	
 	// Hide MCE Toolbar on this editor because it's not needed
@@ -66,4 +66,4 @@ echo '<div style="width: 100%; float: left;">';
 
 	wp_editor($wpmodels_quick_closing_content, $wpmodels_quick_closing_editor_id, $wpmodels_quick_closing_editor_settings);
 
-echo '</div><br style="clear: both;" />';*/
+echo '</div><br style="clear: both;" />';

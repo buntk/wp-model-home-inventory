@@ -74,15 +74,15 @@ function wp_models_shortcode($atts, $content = null) {
 
         $first_class = ( 1 == $count ) ? 'first' : '';
 
-        $output .= '<div class="model-wrap ' . get_column_class($columns) . ' ' . $first_class . '"><h3 class="model-title"><a href="' . get_permalink() . '">' . get_the_title() . '</a></h3><div class="model-widget-thumb"><a href="' . get_permalink() . '" class="model-image-link">' . get_the_post_thumbnail( $post->ID, 'models' ) . '</a>';
+        $output .= '<div class="model-wrap ' . get_column_class($columns) . ' ' . $first_class . '"><h4 class="model-title"><a href="' . get_permalink() . '">' . get_the_title() . '</a></h4><div class="model-widget-thumb"><a href="' . get_permalink() . '" class="model-image-link">' . get_the_post_thumbnail( $post->ID, 'models' ) . '</a>';
 
         if ( '' != wp_models_get_status() ) {
             $output .= '<span class="model-status ' . strtolower(str_replace(' ', '-', wp_models_get_status())) . '">' . wp_models_get_status() . '</span>';
         }
 		
-		if ( '' != get_post_meta( $post->ID, '_model_text', true ) ) {
+		//if ( '' != get_post_meta( $post->ID, '_model_text', true ) ) {
 		$output .= '<div class="model-series"><span>' . get_post_meta( $post->ID, '_model_text', true ) . '</span>';
-		}
+		//} 
 		
 		$output .= '</div><!-- .model-series -->';
 
