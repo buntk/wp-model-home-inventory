@@ -53,7 +53,10 @@
 	top: 25px;
 	left: -35px;
 	font-size: 14px;
+    font-weight: 700;
 	line-height: 18px;
+    text-align: center;
+    text-transform: uppercase;
 	-moz-transform: scale(1) rotate(-45deg) translate(0px);
 	-webkit-transform: scale(1) rotate(-45deg) translate(0px);
 	-o-transform: scale(1) rotate(-45deg) translate(0px);
