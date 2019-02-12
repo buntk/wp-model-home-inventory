@@ -42,6 +42,7 @@ echo '</div><br style="clear: both;" />';
 
 *
 */
+
 /* New editor field for quick closing model homes */
 echo '<div style="width: 100%; float: left;">';
 	
